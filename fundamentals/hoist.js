@@ -49,8 +49,6 @@ function eat(){
 // console log of food logs a calue of 'half-chicken'
 // food has calue changed to 'gone'
 
-
-
 // 5. 
 mean();
 console.log(food);
@@ -60,14 +58,15 @@ var mean = function() {
     var food = "fish";
     console.log(food);
 }
-
 console.log(food);
-
-
-
-
-
-
+// function mean() hoisted
+// var food hoisted
+// function mean() called
+// var food given value of chicken
+// console log of food logs value of chicken
+// var food given value of fish
+// console log of food logs value of fish
+// console log of food logs value of fish
 
 // 6.
 console.log(genre);
@@ -81,12 +80,17 @@ function rewind() {
 }
 console.log(genre);
 
-
-
-
-
-
-
+// var genre hoisted
+// function rewind hoisted
+// console log of genre logs a value of undefined
+// var genre given global scope value of disco
+// function rewind called
+// var genre given value of rock
+// console log of genre logs value of rock
+// var genre given new value of r&b
+// console log of genre logs value of r&b
+// block scope is blocked and genre value returns to global value of disco
+// console log of genre logs value of disco
 
 // 7.
 dojo = "san jose";
@@ -100,12 +104,17 @@ function learn() {
 }
 console.log(dojo);
 
-
-
-
-
-
-
+// var dojo hoisted
+// function learn() hoisted
+// var dojo given global scope value of san jose
+// console log of dojo logs value of san jose
+// function learn() called
+// var dojo given new value of seatlle
+// console log of dojo logs value of seattle
+// var dojo given new value of burbank
+// console log of dojo logs value of burbank
+// block scope is blocked and dojo value returns to global value of san jose
+// console log of dojo logs value of san jose
 
 // 8.
 console.log(makeDojo("Chicago", 65));
@@ -122,3 +131,6 @@ function makeDojo(name, students){
     }
     return dojo;
 }
+// syntax error - cant change value of declared const
+
+
