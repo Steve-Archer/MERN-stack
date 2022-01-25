@@ -1,4 +1,3 @@
-const res = require('express/lib/response');
 const Ninja = require('../models/ninja.model');
 
 module.exports.sayHello = (req, res) => {
