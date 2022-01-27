@@ -1,39 +1,43 @@
-class MaximumHeap{
-    constructor(){
+class MaximumHeap {
+    constructor() {
         this.values = [null];
-
     }
-
-    insert(value){
-        //push the value to the end of our array
+    swap(value1,value2){
+        [this.values[value1], this.values[value2]]=[this.values[value2], this.values[value1]]
+    }
+    insert(value) {
         this.values.push(value);
-
-        //calculate the current index
-        let currentIdx = this.values.length-1;
-
-        //calculate which index the parent is at based on the current index
-        let parentIdx = Math.floor(currentIdx/2);
-
-        //if the parent is less than the current value, then swap
-        while(currentIdx >1 && this.values[parentIdx]< this.values[currentIdx]){
-            [this.values[parentIdx], this.values[currentIdx]]=[this.values[currentIdx], this.values[parentIdx]];
-
-            //current index is now where parent used to be
+        let currentIdx = this.values.length - 1;
+        let parentIdx = Math.floor(currentIdx / 2);
+        while (currentIdx > 1 && this.values[parentIdx] < this.values[currentIdx]) {
+            [this.values[parentIdx], this.values[currentIdx]] = [this.values[currentIdx], this.values[parentIdx]];
             currentIdx = parentIdx;
-
-            //calculate the new parent index
-            parentIdx = Math.floor(currentIdx/2);
+            parentIdx = Math.floor(currentIdx / 2);
         }
-
+        console.log(this.values)
         return this;
     }
-
-
+    extractMax(){
+        this.swap(1,this.values.length-1);
+        let max = this.values.pop()
+        let currentIdx = 1;
+        let childIdx = '';
+        while(this.values[currentIdx]<this.values[currentIdx*2]||this.values[currentIdx]<this.values[(currentIdx*2+1)]){
+            if(this.values[currentIdx*2]>this.values[currentIdx*2+1]){
+                childIdx = currentIdx*2;
+            }
+            else{
+                childIdx = currentIdx*2+1;
+            }
+            this.swap(currentIdx,childIdx)
+            currentIdx = childIdx;
+        }
+        console.log(this.values)
+        return max;
+    }
 }
-
-
 let heap1 = new MaximumHeap()
 
-heap1.insert(7).insert(5).insert(3).insert(-1).insert(6).insert(100).
+heap1.insert(7).insert(5).insert(3).insert(-1).insert(6).insert(44).insert(13).insert(100).extractMax()
 
 console.log(heap1.values)

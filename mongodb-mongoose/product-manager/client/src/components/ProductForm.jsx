@@ -1,10 +1,12 @@
 import React, {useState} from "react"
 import axios from "axios"
 
-const ProductForm = () => {
+
+const ProductForm = (props) => {
     let [title,setTitle] = useState("")
     let [price,setPrice] = useState("")
     let [description,setDescription] = useState("")
+    let [formErrors, setFormErrors] = useState({})
 
     const clickHandler = (e) => {
         e.preventDefault()
@@ -12,6 +14,11 @@ const ProductForm = () => {
         axios.post("http://localhost:8000/api/products/new", ProductObject)
             .then(res => {
                 console.log(res)
+                if(res.data.error){
+                    setFormErrors(res.data.error.errors)
+                }else{
+                    props.setNewProduct(!props.newProd)
+                }
             })
             .catch(err => console.log("error", err))
     }
