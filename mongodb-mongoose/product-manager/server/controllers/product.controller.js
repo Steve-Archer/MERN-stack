@@ -14,3 +14,10 @@ module.exports.createProduct = (req, res) => {
         })
         .catch(err => res.json({message: "Something went wrong", error: err}))
 }
+module.exports.findOneProduct = (req, res) => {
+    Product.findOne({_id: req.params.id})
+        .then(oneProduct => {
+            res.json({results: oneProduct})
+        })
+        .catch(err => res.json({message: "Something went wrong", error: err}))
+}
