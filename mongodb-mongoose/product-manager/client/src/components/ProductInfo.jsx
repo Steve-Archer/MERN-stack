@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 
 const ProductInfo = () => {
     const { id } = useParams();
-    const [productInfo, setProductInfo] = useState({});
+    let [productInfo, setProductInfo] = useState({});
     const history = useHistory();
     
     useEffect(()=>{

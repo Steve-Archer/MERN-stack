@@ -7,5 +7,5 @@ const AuthorSchema = new mongoose.Schema({
         minlength: [3, "Name must be at least 3 letters long"]
     }
 })
-const Product = mongoose.model("Author", AuthorSchema)
-module.exports = Product
+const Author = mongoose.model("Author", AuthorSchema)
+module.exports = Author
